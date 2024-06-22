@@ -45,5 +45,5 @@
             </plugin>
         </plugins>
     </build>
-    <name>MyLib</name>
+    <name>myLibAntigo</name>
 </project>
