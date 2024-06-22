@@ -419,6 +419,7 @@ public class Dashboard extends javax.swing.JFrame {
         loginFrame.setVisible(true);
         // Fecha a tela atual
         dispose();
+        //teste
     }//GEN-LAST:event_DeslogarMouseClicked
 
     /**
