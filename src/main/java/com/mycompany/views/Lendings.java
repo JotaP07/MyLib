@@ -10,7 +10,8 @@ import static com.mycompany.mylib.Dashboard.ShowJPanel;
 import com.mycompany.mylib.Login;
 import com.mycompany.utilitarios.Utilitarios;
 import java.awt.*;
-
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,10 +43,45 @@ public class Lendings extends javax.swing.JPanel {
         //txtFunc.putClientProperty("JTextField.placeholderText", "Insira o ID do Funcionário.");
         txtCliente.putClientProperty("JTextField.placeholderText", "Insira o ID do Cliente.");
         txtItem.putClientProperty("JTextField.placeholderText", "Insira o ID do Item.");
-        
+
         txtFunc.setText(String.valueOf(Login.getIdfuncionarioLogado()));
 
     }
+
+private boolean validateFields() {
+    String cliente = txtCliente.getText().trim();
+    String item = txtItem.getText().trim();
+
+    if (cliente.isEmpty() || !Pattern.matches("\\d+", cliente)) {
+        JOptionPane.showMessageDialog(this, "ID do Cliente inválido. Por favor, insira um ID válido.");
+        return false;
+    }
+
+    if (item.isEmpty() || !Pattern.matches("\\d+", item)) {
+        JOptionPane.showMessageDialog(this, "ID do Item inválido. Por favor, insira um ID válido.");
+        return false;
+    }
+
+    DAOLendings daoLending = new DAOLendings();
+
+    if (!daoLending.clienteExiste(Integer.parseInt(cliente))) {
+        JOptionPane.showMessageDialog(this, "ID do Cliente não encontrado. Por favor, insira um ID válido.");
+        return false;
+    }
+
+ DAOLendings.ItemStatus status = daoLending.verificarItemDisponivel(Integer.parseInt(item));
+
+    if (status == DAOLendings.ItemStatus.NOT_FOUND) {
+        JOptionPane.showMessageDialog(this, "ID do Item não encontrado. Por favor, insira um ID válido.");
+        return false;
+    } else if (status == DAOLendings.ItemStatus.UNAVAILABLE) {
+        JOptionPane.showMessageDialog(this, "Item indisponível. Por favor, escolha outro item.");
+        return false;
+    }
+
+    return true;
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -241,17 +277,21 @@ public class Lendings extends javax.swing.JPanel {
 
     private void ButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtomActionPerformed
 
-    LendingsM lending = new LendingsM();
+        if (!validateFields()) {
+            return;
+        }
 
-    lending.setFuncionarioId(Integer.parseInt(txtFunc.getText()));
-    lending.setClienteId(Integer.parseInt(txtCliente.getText()));
-    lending.setItemId(Integer.parseInt(txtItem.getText()));
-    lending.setDevolvido(0);
+        LendingsM lending = new LendingsM();
 
-    DAOLendings daoLending = new DAOLendings();
-    daoLending.emprestar(lending);
-        
-    LimparCampos();
+        lending.setFuncionarioId(Integer.parseInt(txtFunc.getText()));
+        lending.setClienteId(Integer.parseInt(txtCliente.getText()));
+        lending.setItemId(Integer.parseInt(txtItem.getText()));
+        lending.setDevolvido(0);
+
+        DAOLendings daoLending = new DAOLendings();
+        daoLending.emprestar(lending);
+
+        LimparCampos();
 
     }//GEN-LAST:event_ButtomActionPerformed
 
@@ -264,8 +304,7 @@ public class Lendings extends javax.swing.JPanel {
         ShowJPanel(new TbLendings());
     }//GEN-LAST:event_btTabelaActionPerformed
 
-    
-    public void LimparCampos(){
+    public void LimparCampos() {
         txtCliente.setText("");
         txtItem.setText("");
     }

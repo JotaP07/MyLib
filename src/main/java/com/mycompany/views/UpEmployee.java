@@ -11,6 +11,7 @@ import static com.mycompany.mylib.Dashboard.ShowJPanel;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class UpEmployee extends javax.swing.JPanel {
 
@@ -32,7 +33,6 @@ public class UpEmployee extends javax.swing.JPanel {
         InitStyles();
         populateSexoMap();// populando o comboBox
     }
-
 
     private void populateSexoMap() {
         sexoMap.put("Masculino", 1);
@@ -82,6 +82,44 @@ public class UpEmployee extends javax.swing.JPanel {
                 txtPapel.setText(employeeEdition.getPapel());
             }
         }
+    }
+
+    private boolean validateFields() {
+        // Verifica se os campos de texto estão vazios
+        if (txtNomeUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Nome/Login' é obrigatório.");
+            return false;
+        }
+        if (txtSenha.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Senha' é obrigatório.");
+            return false;
+        }
+        if (txtNome.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Nome' é obrigatório.");
+            return false;
+        }
+        if (txtEmail.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'E-mail' é obrigatório.");
+            return false;
+        }
+        if (cbSexo.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione o 'Sexo' do funcionário.");
+            return false;
+        }
+        if (txtPapel.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Papel' é obrigatório.");
+            return false;
+        }
+
+        // Verifica se o papel selecionado é válido
+        String papel = txtPapel.getText().trim().toLowerCase();
+        if (!papel.equals("funcionario") && !papel.equals("admin")) {
+            JOptionPane.showMessageDialog(this, "O 'Papel' selecionado não é válido.");
+            return false;
+        }
+
+        // Se todos os campos estiverem válidos, retorna true
+        return true;
     }
 
     /**
@@ -306,6 +344,11 @@ public class UpEmployee extends javax.swing.JPanel {
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         // TODO add your handling code here:
+
+        if (!validateFields()) {
+            return; // Se a validação falhar, retorna sem fazer nada
+        }
+
         EmployeeM employee = new EmployeeM();
 
         employee.setNomeUsuario(txtNomeUsuario.getText());
@@ -322,6 +365,9 @@ public class UpEmployee extends javax.swing.JPanel {
         if (isEdition) {
             // Att do cliente
             employee.setId(employeeEdition.getId()); // Necessario pra pegar o Id selecioado e editar
+            if (!validateFields()) {
+                return; // Se a validação falhar, retorna sem fazer nada
+            }
             daoEmployee.alterar(employee);
         } else {
             // Cadastrando um novo cliente

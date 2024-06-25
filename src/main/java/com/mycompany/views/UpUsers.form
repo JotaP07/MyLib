@@ -317,6 +317,9 @@
               <Format format="###.###.###-##" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCpfActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtCep">
           <Properties>
@@ -324,6 +327,9 @@
               <Format format="#####-###" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCepActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtTelefone">
           <Properties>
@@ -331,6 +337,9 @@
               <Format format="## #####-####" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefoneActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

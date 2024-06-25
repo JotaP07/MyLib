@@ -26,6 +26,7 @@ public class Users extends javax.swing.JPanel {
         initComponents();
         InitStyles();
         LoadUsers();
+        txtFclientes.requestFocus();
     }
 
     private void InitStyles() {
@@ -116,6 +117,11 @@ public class Users extends javax.swing.JPanel {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setOpaque(true);
 
+        txtFclientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFclientesActionPerformed(evt);
+            }
+        });
         txtFclientes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtFclientesKeyPressed(evt);
@@ -130,6 +136,8 @@ public class Users extends javax.swing.JPanel {
         addButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         addButton.setText("NOVO");
         addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addButton.setFocusable(false);
+        addButton.setHideActionText(true);
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
@@ -139,6 +147,8 @@ public class Users extends javax.swing.JPanel {
         editButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         editButton.setText("EDITAR");
         editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        editButton.setFocusable(false);
+        editButton.setHideActionText(true);
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
@@ -148,6 +158,8 @@ public class Users extends javax.swing.JPanel {
         deleteButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         deleteButton.setText("DELETAR");
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        deleteButton.setFocusable(false);
+        deleteButton.setHideActionText(true);
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -311,6 +323,10 @@ public class Users extends javax.swing.JPanel {
         // TODO add your handling code here:
         ConsultarTempoReal();
     }//GEN-LAST:event_txtFclientesKeyReleased
+
+    private void txtFclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFclientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFclientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

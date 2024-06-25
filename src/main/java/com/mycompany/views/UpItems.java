@@ -8,6 +8,7 @@ import com.mycompany.dao.DAOItems;
 import com.mycompany.models.ItemsM;
 import static com.mycompany.mylib.Dashboard.ShowJPanel;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class UpItems extends javax.swing.JPanel {
 
@@ -74,6 +75,68 @@ public class UpItems extends javax.swing.JPanel {
 
             }
         }
+    }
+
+    private boolean validateFields() {
+        // Verifica se os campos de texto estão vazios
+        if (txtTipo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Tipo' é obrigatório.");
+            return false;
+        }
+        if (!txtTipo.getText().trim().equalsIgnoreCase("Livro") && !txtTipo.getText().trim().equalsIgnoreCase("Revista")) {
+            JOptionPane.showMessageDialog(this, "O campo 'Tipo' deve ser 'Livro' ou 'Revista'.");
+            return false;
+        }
+        if (txtTitulo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Título' é obrigatório.");
+            return false;
+        }
+        if (txtAutor.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Autor' é obrigatório.");
+            return false;
+        }
+        if (txtEditora.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Editora' é obrigatório.");
+            return false;
+        }
+        if (txtGenero.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Gênero' é obrigatório.");
+            return false;
+        }
+        if (txtAnoPublicacao.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Ano de Publicação' é obrigatório.");
+            return false;
+        }
+        if (txtQuantidade.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo 'Quantidade' é obrigatório.");
+            return false;
+        }
+
+        // Verifica se os campos numéricos são válidos
+        try {
+            int anoPublicacao = Integer.parseInt(txtAnoPublicacao.getText().trim());
+            if (anoPublicacao < 0) {
+                JOptionPane.showMessageDialog(this, "O 'Ano de Publicação' deve ser um número positivo.");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "O 'Ano de Publicação' deve ser um número válido.");
+            return false;
+        }
+
+        try {
+            int quantidade = Integer.parseInt(txtQuantidade.getText().trim());
+            if (quantidade < 0) {
+                JOptionPane.showMessageDialog(this, "A 'Quantidade' deve ser um número positivo.");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "A 'Quantidade' deve ser um número válido.");
+            return false;
+        }
+
+        // Se todos os campos estiverem válidos, retorna true
+        return true;
     }
 
     /**
@@ -333,6 +396,11 @@ public class UpItems extends javax.swing.JPanel {
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         // TODO add your handling code here:
+
+        if (!validateFields()) {
+            return; // Se a validação falhar, retorna sem fazer nada
+        }
+
         ItemsM items = new ItemsM();
         items.setTipo(txtTipo.getText());
         items.setTitulo(txtTitulo.getText());

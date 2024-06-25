@@ -44,7 +44,7 @@ public class DAOLendings implements DAOGenerica<LendingsM> {
                 st.setInt(2, lending.getClienteId());
                 st.setInt(3, lending.getItemId());
                 st.setInt(4, lending.getDevolvido());
-                st.setInt(5, lending.getId());            
+                st.setInt(5, lending.getId());
                 st.executeUpdate();
                 st.close();
                 JOptionPane.showMessageDialog(null, "Item devolvido com sucesso!");
@@ -61,42 +61,76 @@ public class DAOLendings implements DAOGenerica<LendingsM> {
 
     @Override
     public void alterar(LendingsM lending) {
-//        String sql = "UPDATE emprestimos SET funcionario_id = ?, cliente_id = ?, item_id = ?, data_emprestimo = ?, data_devolucao = ?, devolvido = ? WHERE idemprestimo = ?";
-//        try {
-//            if (this.conexao.conectar()) {
-//                PreparedStatement st = this.conexao.getConnection().prepareStatement(sql);
-//                st.setInt(1, lending.getFuncionarioId());
-//                st.setInt(2, lending.getClienteId());
-//                st.setInt(3, lending.getItemId());
-//                st.setTimestamp(4, Timestamp.valueOf(lending.getDataEmprestimo()));
-//                st.setTimestamp(5, Timestamp.valueOf(lending.getDataDevolucao()));
-//                st.setInt(6, lending.getDevolvido());
-//                st.setInt(7, lending.getId());
-//                st.executeUpdate();
-//                st.close();
-//                JOptionPane.showMessageDialog(null, "Empréstimo atualizado com sucesso!");
-//                this.conexao.getConnection().close();
-//            }
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, "Erro ao atualizar o empréstimo: " + e.getMessage());
-//        }
     }
 
-    @Override
-    public void excluir(LendingsM lending) {
-        String sql = "DELETE FROM emprestimos WHERE idemprestimo = ?";
+    public boolean clienteExiste(int clienteId) {
+        String sql = "SELECT COUNT(*) FROM clientes WHERE idcliente = ?";
         try {
             if (this.conexao.conectar()) {
                 PreparedStatement st = this.conexao.getConnection().prepareStatement(sql);
-                st.setInt(1, lending.getId());
-                st.executeUpdate();
+                st.setInt(1, clienteId);
+                ResultSet rs = st.executeQuery();
+                boolean existe = rs.next() && rs.getInt(1) > 0;
+                rs.close();
                 st.close();
-                JOptionPane.showMessageDialog(null, "Empréstimo excluído com sucesso!");
                 this.conexao.getConnection().close();
+                return existe;
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir o empréstimo: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao verificar o cliente: " + e.getMessage());
         }
+        return false;
+    }
+
+ public enum ItemStatus {
+        NOT_FOUND,
+        UNAVAILABLE,
+        AVAILABLE
+    }
+
+    // Método para verificar a disponibilidade do item
+    public ItemStatus verificarItemDisponivel(int itemId) {
+        String sql = "SELECT quantidade FROM itens WHERE iditem = ?";
+        try {
+            if (this.conexao.conectar()) {
+                PreparedStatement st = this.conexao.getConnection().prepareStatement(sql);
+                st.setInt(1, itemId);
+                ResultSet rs = st.executeQuery();
+                if (rs.next()) {
+                    int quantidade = rs.getInt("quantidade");
+                    rs.close();
+                    st.close();
+                    this.conexao.getConnection().close();
+                    return quantidade > 0 ? ItemStatus.AVAILABLE : ItemStatus.UNAVAILABLE;
+                } else {
+                    rs.close();
+                    st.close();
+                    this.conexao.getConnection().close();
+                    return ItemStatus.NOT_FOUND;
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao verificar disponibilidade do item: " + e.getMessage());
+        }
+        return ItemStatus.NOT_FOUND;
+    }
+
+
+    @Override
+    public void excluir(LendingsM lending) { //caso eu adicione o metodo de excluir
+//        String sql = "DELETE FROM emprestimos WHERE idemprestimo = ?";
+//        try {
+//            if (this.conexao.conectar()) {
+//                PreparedStatement st = this.conexao.getConnection().prepareStatement(sql);
+//                st.setInt(1, lending.getId());
+//                st.executeUpdate();
+//                st.close();
+//                JOptionPane.showMessageDialog(null, "Empréstimo excluído com sucesso!");
+//                this.conexao.getConnection().close();
+//            }
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, "Erro ao excluir o empréstimo: " + e.getMessage());
+//        }
     }
 
     @Override

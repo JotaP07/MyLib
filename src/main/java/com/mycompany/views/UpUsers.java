@@ -10,6 +10,8 @@ import static com.mycompany.mylib.Dashboard.ShowJPanel;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 public class UpUsers extends javax.swing.JPanel {
 
@@ -83,13 +85,60 @@ public class UpUsers extends javax.swing.JPanel {
                 txtCep.setText(userEdition.getCep());
                 txtTelefone.setText(userEdition.getTelefone());
                 txtEmail.setText(userEdition.getEmail());
-                        txtNome.requestFocus();
+                txtNome.requestFocus();
 
-            }else{
-                    txtNome.requestFocus();
+            } else {
+                txtNome.requestFocus();
 
+            }
         }
+    }
+
+    private boolean validateFields() {
+        String nome = txtNome.getText().trim();
+        String cpf = txtCpf.getText().trim();
+        String sexo = (String) cbSexo.getSelectedItem();
+        String endereco = txtEndereco.getText().trim();
+        String cep = txtCep.getText().trim();
+        String telefone = txtTelefone.getText().trim();
+        String email = txtEmail.getText().trim();
+
+      if (nome.isEmpty() || !Pattern.matches("[a-zA-Z\\s\\p{L}]+", nome)) {
+        JOptionPane.showMessageDialog(this, "Nome inválido. Por favor, insira um nome válido.");
+        return false;
+    }
+
+        if (!Pattern.matches("\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", cpf)) {
+            JOptionPane.showMessageDialog(this, "CPF inválido. Por favor, insira um CPF válido.");
+            return false;
         }
+
+        if (sexo == null || sexo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Sexo inválido. Por favor, selecione uma opção.");
+            return false;
+        }
+
+        if (endereco.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Endereço inválido. Por favor, insira um endereço válido.");
+            return false;
+        }
+
+        if (!Pattern.matches("\\d{5}-\\d{3}", cep)) {
+            JOptionPane.showMessageDialog(this, "CEP inválido. Por favor, insira um CEP válido.");
+            return false;
+        }
+
+        if (!Pattern.matches("\\d{2} \\d{4,5}-\\d{4}", telefone)) {
+            JOptionPane.showMessageDialog(this, "Telefone inválido. Por favor, insira um telefone válido.");
+            return false;
+        }
+
+        if (!Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", email)) {
+            JOptionPane.showMessageDialog(this, "E-mail inválido. Por favor, insira um e-mail válido.");
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -218,18 +267,33 @@ public class UpUsers extends javax.swing.JPanel {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCpfActionPerformed(evt);
+            }
+        });
 
         try {
             txtCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCepActionPerformed(evt);
+            }
+        });
 
         try {
             txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("## #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefoneActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -352,6 +416,9 @@ public class UpUsers extends javax.swing.JPanel {
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         // TODO add your handling code here:
+        if (!validateFields()) {
+            return; // Se a validação falhar, não prosseguir com o cadastro ou edição
+        }
         UsersM users = new UsersM();
 
         users.setNome(txtNome.getText());
@@ -389,6 +456,18 @@ public class UpUsers extends javax.swing.JPanel {
         // TODO add your handling code here:
         txtNome.requestFocus();
     }//GEN-LAST:event_bgFocusGained
+
+    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCpfActionPerformed
+
+    private void txtCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCepActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCepActionPerformed
+
+    private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefoneActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
