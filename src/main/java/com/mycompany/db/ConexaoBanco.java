@@ -12,10 +12,10 @@ public class ConexaoBanco {
     private Connection conexao; 
     
     public ConexaoBanco(){
-        this.servidor = "localhost";
-        this.banco = "biblioteca";
-        this.usuario = "root"; // coloque o usuário do seu banco
-        this.senha = ""; // coloque a senha do seu banco
+        this.servidor = "200.195.171.122";
+        this.banco = "grupo11_Jp";
+        this.usuario = "grupo11";
+        this.senha = "9agmsegriCatwXLH";
     }
     
     public boolean conectar(){
