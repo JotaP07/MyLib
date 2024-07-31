@@ -20,6 +20,7 @@ MyLib is a library management system developed in Java with Maven. The system is
   - Expected return date
   - Actual return date
   - Supplier inclusion
+  - Change the language to English
 
 ### Features
 
