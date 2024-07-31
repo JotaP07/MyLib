@@ -27,7 +27,7 @@ MyLib is a library management system developed in Java with Maven. The system is
 - **Loan and Return Management**: Track the borrowing and returning of books and magazines.
 - **Employee Management**: Register employees and assign roles.
 - **Client Management**: Add and maintain client information.
-- **Reporting**: Generate reports on actions performed within the system.
+- **Reporting**: Shows the actions performed in the system.
 
 ## Getting Started
 
