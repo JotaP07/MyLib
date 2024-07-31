@@ -13,9 +13,9 @@ public class ConexaoBanco {
     
     public ConexaoBanco(){
         this.servidor = "200.195.171.122";
-        this.banco = "grupo11_Jp";
-        this.usuario = "grupo11";
-        this.senha = "9agmsegriCatwXLH";
+        this.banco = "seuBanco";
+        this.usuario = "seuUsuario";
+        this.senha = "suaSenha";
     }
     
     public boolean conectar(){
