@@ -35,10 +35,9 @@ The system uses a cloud-based database managed via phpMyAdmin.
   - **Username:** tester
   - **Password:** 123
  
-   <p align="left">
-  <img src="https://github.com/user-attachments/assets/12a86ece-ee5c-4d01-942f-571de27585d6" alt="LoginTester" width="500" style="display:inline-block;" />
+  <p align="left">
+  <img src="https://github.com/user-attachments/assets/ecc1620b-e58b-4adc-a6bc-c5f40464dd28" alt="LoginTester" width="400" style="display:inline-block;" />
   </p>
-
 
 ## Getting Started
 
