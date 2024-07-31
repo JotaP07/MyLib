@@ -1,1 +1,3 @@
-![banner](https://github.com/user-attachments/assets/1cc313c1-69c9-4bf4-90bf-ffa6912ba3fb)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/65df00f8-c35d-4f52-9330-efa58f1c10cb" alt="Banner" />
+</p>
