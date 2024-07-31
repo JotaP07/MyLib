@@ -11,7 +11,7 @@
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a7e74d75-3b48-4785-ab04-c64189066778" alt="Login" width="300" style="display:inline-block;" />
-  <img src="https://github.com/user-attachments/assets/eddf1c40-e1bb-4601-809d-880a5a2124a3" alt="Dashboard" width="510" style="display:inline-block;" />
+  <img src="https://github.com/user-attachments/assets/eddf1c40-e1bb-4601-809d-880a5a2124a3" alt="Dashboard" width="520" style="display:inline-block;" />
 </p>
 
 ## Features
