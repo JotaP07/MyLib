@@ -21,6 +21,7 @@
 - **Employee Management**: Register employees and assign roles.
 - **Client Management**: Add and maintain client information.
 - **Reporting**: Shows the actions performed in the system.
+- **Modern UI Theme**: Utilizes a modern and visually appealing theme from FlatLaf for a better user experience.
 
 
 ## Database
