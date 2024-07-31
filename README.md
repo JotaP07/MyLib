@@ -46,9 +46,6 @@ I am open to suggestions and contributions. If you would like to add something t
 <br><br>
 
 
-
-##
-
 <p align="center">
    💬 Send me a Message 🗨️
 </p>
