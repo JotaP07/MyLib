@@ -38,7 +38,7 @@ The system uses a cloud-based database managed via phpMyAdmin.
 
 ## Want to take a test?
 
-- **Download the Executable**: Go to the [releases page](link-to-releases-page) and download the latest version of the executable `.jar` file.
+- **Download the Executable**: Go to the [releases page](https://github.com/JotaP07/MyLib/releases/tag/Dowload) and download the latest version of the executable `.jar` file.
 
 ## Contributing
 
