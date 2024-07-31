@@ -34,6 +34,10 @@ The system uses a cloud-based database managed via phpMyAdmin.
 - Use the provided test credentials to log in and test the system:
   - **Username:** tester
   - **Password:** 123
+ 
+   <p align="left">
+  <img src="https://github.com/user-attachments/assets/09f45008-d9fa-47bc-9426-d686552a8774" alt="Login" width="300" style="display:inline-block;" />
+</p>
 
 
 ## Getting Started
@@ -80,7 +84,8 @@ To clone and explore the MyLib project, please note that the code in this reposi
 2. After downloading, you can run the executable `.jar` file using the following command:
 
     ```bash
-    java -jar myLib-with-dependencies.jar
+    cd target
+    java -jar .\MyLib-1.0-SNAPSHOT-jar-with-dependencies.jar
     ```
 
     Replace `myLib-with-dependencies.jar` with the name of the downloaded `.jar` file if it's different.
@@ -128,4 +133,5 @@ I am open to suggestions and contributions. If you would like to add something t
     <img alt="Vedant Jajoo Twitter" width="50" src="https://raw.githubusercontent.com/edent/SuperTinyIcons/099dc12b59179d07d534069bc8551718f786d91a/images/svg/twitter.svg" />
   </a>
 </p>
+
 
