@@ -14,15 +14,6 @@ MyLib is a library management system developed in Java with Maven. The system is
   <img src="https://github.com/user-attachments/assets/eddf1c40-e1bb-4601-809d-880a5a2124a3" alt="Dashboard" width="500" style="display:inline-block;" />
 </p>
 
-**Notes:**
-- The permission blocking feature is still pending.
-- Some improvements will be implemented, such as:
-  - Loan date
-  - Expected return date
-  - Actual return date
-  - Supplier inclusion
-  - Change the language to English
-
 ## Features
 
 - **Book and Magazine Management**: Add, edit, and remove books and magazines from the system.
@@ -35,10 +26,81 @@ MyLib is a library management system developed in Java with Maven. The system is
 ## Database
 
 The system uses a cloud-based database managed via phpMyAdmin.
+- **Important:** The code in this repository does not include a database connection. The full functionality of the system is available only through the executable provided in the releases.
 
 ## Want to take a test?
 
 - **Download the Executable**: Go to the [releases page](https://github.com/JotaP07/MyLib/releases/tag/Dowload) and download the latest version of the executable `.jar` file.
+- Use the provided test credentials to log in and test the system:
+  - **Username:** tester
+  - **Password:** 123
+
+
+## Getting Started
+
+To clone and explore the MyLib project, please note that the code in this repository is designed primarily for educational purposes. The code provided does not include a database connection, so the system will not function fully if you only clone the repository. For complete functionality, use the executable provided in the releases section.
+
+### **Prerequisites**
+
+- **Java Development Kit (JDK) 17**: Ensure you have JDK 17 installed. You can download it from [Oracle](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) or [AdoptOpenJDK](https://adoptopenjdk.net/).
+- **Maven**: Install Apache Maven to build and manage your project dependencies. You can download it from [Maven's official site](https://maven.apache.org/download.cgi).
+- **IDE**: While you can use any Java IDE, I personally recommend NetBeans or IntelliJ IDEA for this project. **Furthermore, the IDE will facilitate your access and modification of the cloned code**
+
+### **Clone the Repository**
+
+1. Open a terminal or command prompt.
+2. Clone the repository using the following command:
+
+    ```bash
+    git clone https://github.com/JotaP07/MyLib.git
+    ```
+
+3. Navigate into the project directory:
+
+    ```bash
+    cd MyLib
+    ```
+
+### **Build the Project**
+
+1. Use Maven to build the project. Run the following command:
+
+    ```bash
+    mvn clean package
+    ```
+
+    This command will download dependencies, compile the code, and package it into a `.jar` file.
+
+### **Run the Executable**
+
+1. **Important Note**: The cloned code will not function completely as it does not include a database connection. To use the system with full functionality, you must use the pre-built executable `.jar` file available in the releases section. 
+
+    - **Download the Executable**: Go to the [releases page](https://github.com/JotaP07/MyLib/releases/tag/Dowload) and download the latest version of the executable `.jar` file. Generally, the executable will have `with-dependencies` in its name to indicate that it includes all necessary dependencies.
+
+2. After downloading, you can run the executable `.jar` file using the following command:
+
+    ```bash
+    java -jar myLib-with-dependencies.jar
+    ```
+
+    Replace `myLib-with-dependencies.jar` with the name of the downloaded `.jar` file if it's different.
+
+### **Configuration**
+
+- **Database Configuration:** The code in this repository does not include a database connection. The full functionality of the system is available only through the executable provided in the releases.
+
+### **Notes**
+
+- The system is currently in Brazilian Portuguese. Future updates will include an option to change the language to English.
+- Features under development include:
+  - Permission blocking
+  - Loan date
+  - Expected return date
+  - Actual return date
+  - Supplier inclusion
+
+If you encounter any issues or have questions, feel free to reach out.
+
 
 ## Contributing
 
