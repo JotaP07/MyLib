@@ -126,9 +126,7 @@ I am open to suggestions and contributions. If you would like to add something t
   <a href="https://www.instagram.com/joao.canhete/" target="_blank">
     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="hridoyalhazard" height="50" width="50" />
   </a>
-  <a href="https://discord.com/channels/jotapeee07" target="_blank">
-    <img src="https://user-images.githubusercontent.com/88904952/234982627-019fd336-6248-453c-9b05-97c13fd1d207.png" alt="discord" height="50" width="50" />
-  </a>
+
   <a href="https://x.com/JpDev_" target="_blank">
     <img alt="Vedant Jajoo Twitter" width="50" src="https://raw.githubusercontent.com/edent/SuperTinyIcons/099dc12b59179d07d534069bc8551718f786d91a/images/svg/twitter.svg" />
   </a>
